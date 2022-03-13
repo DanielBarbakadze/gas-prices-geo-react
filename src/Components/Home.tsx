@@ -17,7 +17,7 @@ const Home = () => {
     if (savedPrices === undefined && prices !== undefined) {
       setSavedPrices(prices, 1000 * 60 * 60 * 3);
     }
-  }, [prices]);
+  }, [prices]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className={styles.pageWrapper}>
