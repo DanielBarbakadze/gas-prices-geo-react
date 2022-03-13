@@ -1,0 +1,40 @@
+.pageWrapper {
+  min-width: 350px;
+}
+
+.pricesWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.priceTitle {
+  margin-right: 8px;
+}
+
+.priceValue {
+}
+
+.companiesWrapper {
+  color: white;
+  background: #303030;
+  border-radius: 10px;
+  border: 1px solid #b9b9b9;
+  padding: 40px 35px;
+  margin: 20px;
+  width: 300px;
+}
+
+.boxWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  margin-top: 0;
+}
