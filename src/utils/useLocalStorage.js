@@ -2,6 +2,15 @@ import { useState } from "react";
 
 // Hook
 export const useLocalStorage = (key, initialValue) => {
+  if (typeof window !== "undefined") {
+    const item = window.localStorage.getItem(key);
+
+    if (JSON.parse(item)?.expiry < new Date().getTime()) {
+      window.localStorage.removeItem(key);
+      console.log("test");
+    }
+  }
+
   const [storedValue, setStoredValue] = useState(() => {
     if (typeof window === "undefined") {
       return initialValue;
