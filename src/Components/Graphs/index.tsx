@@ -1,7 +1,7 @@
 import useFetchData from "../../utils/useFetchData";
 import CompanyGraph from "./CompanyGraph";
 import { APIResultTypes } from "../../types/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "reactstrap";
 
 enum SelectedCompany {

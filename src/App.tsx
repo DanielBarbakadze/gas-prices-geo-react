@@ -1,8 +1,9 @@
 import { Helmet } from "react-helmet";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Home from "./Components/Home";
 import Graphs from "./Components/Graphs";
+import Notification from "./Components/Notification";
 import "./App.css";
 
 function App() {
@@ -11,6 +12,8 @@ function App() {
       <Helmet>
         <title>საწვავის ფასები</title>
       </Helmet>
+
+      <Notification content={"ვებ გვერდი შექმნის პროცესშია"} />
 
       <Routes>
         <Route path="/" element={<Home />} />
