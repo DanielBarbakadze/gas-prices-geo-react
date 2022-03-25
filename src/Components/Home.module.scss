@@ -4,11 +4,13 @@
 
 .pricesWrapper {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
 .priceTitle {
-  margin-right: 8px;
+  text-align: left;
+  padding-right: 8px;
 }
 
 .priceValue {
@@ -22,12 +24,19 @@
   padding: 40px 35px;
   margin: 20px;
   width: 300px;
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 .boxWrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1200px;
+  margin: auto;
 }
 
 ul {

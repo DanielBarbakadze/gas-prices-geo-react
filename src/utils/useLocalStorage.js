@@ -7,7 +7,7 @@ export const useLocalStorage = (key, initialValue) => {
 
     if (JSON.parse(item)?.expiry < new Date().getTime()) {
       window.localStorage.removeItem(key);
-      console.log("test");
+      // console.log("test");
     }
   }
 

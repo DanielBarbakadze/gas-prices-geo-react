@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useFetchPrices from "../utils/useFetchPrices";
 import { useLocalStorage } from "../utils/useLocalStorage";
 import styles from "./Home.module.scss";
@@ -21,7 +22,11 @@ const Home = () => {
 
   return (
     <div className={styles.pageWrapper}>
-      <h1>Gas Prices</h1>
+      <h1>საწვავის ფასები</h1>
+
+      <h2>
+        <Link to={"/graphs"}>გრაფიკები</Link>
+      </h2>
 
       <div className={styles.boxWrapper}>
         {savedPrices?.value &&

@@ -1,6 +1,9 @@
-import "./App.css";
-import Home from "./Components/Home";
 import { Helmet } from "react-helmet";
+import { Routes, Route, Link } from "react-router-dom";
+
+import Home from "./Components/Home";
+import Graphs from "./Components/Graphs";
+import "./App.css";
 
 function App() {
   return (
@@ -8,7 +11,11 @@ function App() {
       <Helmet>
         <title>საწვავის ფასები</title>
       </Helmet>
-      <Home />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/graphs" element={<Graphs />} />
+      </Routes>
     </div>
   );
 }
