@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "./Components/Home";
 import Graphs from "./Components/Graphs";
-import Notification from "./Components/Notification";
+// import Notification from "./Components/Notification";
 import "./App.css";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <title>საწვავის ფასები</title>
       </Helmet>
 
-      <Notification content={"ვებ გვერდი შექმნის პროცესშია"} />
+      {/* <Notification content={"ვებ გვერდი შექმნის პროცესშია"} /> */}
 
       <Routes>
         <Route path="/" element={<Home />} />

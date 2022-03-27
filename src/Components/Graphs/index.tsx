@@ -2,7 +2,8 @@ import useFetchData from "../../utils/useFetchData";
 import CompanyGraph from "./CompanyGraph";
 import { APIResultTypes } from "../../types/api";
 import { useState } from "react";
-import { Button } from "reactstrap";
+import { Button, Container, Spinner } from "reactstrap";
+import Header from "../Header";
 
 enum SelectedCompany {
   "Socar" = "სოკარი",
@@ -25,31 +26,35 @@ const Graphs = () => {
   const data = useFetchData(currentCompany || initialCompany);
 
   return (
-    <div>
-      {data?.fetchData ? (
-        <CompanyGraph
-          companyData={data?.fetchData as unknown as APIResultTypes}
-        >
-          <div>
-            {companies.map((company, idx) => (
-              <Button
-                key={company}
-                color={
-                  currentCompany === SelectedCompany[company]
-                    ? "primary"
-                    : "secondary"
-                }
-                onClick={() => setCurrentCompany(SelectedCompany[company])}
-                style={{ margin: "15px" }}
-              >
-                {company}
-              </Button>
-            ))}
-          </div>
-        </CompanyGraph>
-      ) : (
-        <div>Loading...</div>
-      )}
+    <div className="bg-gray-2 min-h-full min-w-[370px]">
+      <Header />
+
+      <Container className="flex items-center justify-center min-h-full">
+        {data?.fetchData ? (
+          <CompanyGraph
+            companyData={data?.fetchData as unknown as APIResultTypes}
+          >
+            <div>
+              {companies.map((company, idx) => (
+                <Button
+                  key={company}
+                  color={
+                    currentCompany === SelectedCompany[company]
+                      ? "primary"
+                      : "secondary"
+                  }
+                  onClick={() => setCurrentCompany(SelectedCompany[company])}
+                  style={{ margin: "15px" }}
+                >
+                  {company}
+                </Button>
+              ))}
+            </div>
+          </CompanyGraph>
+        ) : (
+          <Spinner animation="border" variant="success" />
+        )}
+      </Container>
     </div>
   );
 };

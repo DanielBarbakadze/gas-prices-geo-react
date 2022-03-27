@@ -6,7 +6,6 @@ import { APIResultTypes } from "../../types/api";
 import { getMonthNameAndDayFromDate, tenGasColors } from "../../utils/graph";
 
 import Graph from "./Graph";
-import { Link } from "react-router-dom";
 
 type GasolineType = "fuel" | "gas";
 
@@ -51,7 +50,7 @@ const CompanyGraph = ({ companyData, children }: CompanyGraphProps) => {
     passed === type ? "primary" : "secondary";
 
   return (
-    <div className={styles.graphComponentWrapper}>
+    <div className="w-full min-h-full flex flex-col justify-center items-center p-[20px]">
       {children}
       <div className={styles.typesSwitchWrapper}>
         <Button color={getTypeColor("fuel")} onClick={() => setType("fuel")}>
@@ -61,7 +60,7 @@ const CompanyGraph = ({ companyData, children }: CompanyGraphProps) => {
           გაზის ფასები
         </Button>
       </div>
-      <div className={styles.graph}>
+      <div className="min-h-[400px] w-[90%] bg-white-0 p-16 mb-16 rounded-16">
         <Graph tableTitle={companyData.tableTitle} data={data} />
       </div>
       <div className={styles.content}>
@@ -96,8 +95,6 @@ const CompanyGraph = ({ companyData, children }: CompanyGraphProps) => {
           ></Input>
         </InputGroup>
       </div>
-
-      <Link to="/">საწვავის ფასები</Link>
     </div>
   );
 };

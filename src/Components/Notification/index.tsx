@@ -6,7 +6,7 @@ type NotificationProps = {
 
 const Notification = ({ content }: NotificationProps) => {
   return (
-    <div>
+    <div className="text-center">
       <UncontrolledAlert color="warning">{content}</UncontrolledAlert>
     </div>
   );

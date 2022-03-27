@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Col, Container, Row, Spinner } from "reactstrap";
+import { SavedPricesTypes } from "../types/api";
 import useFetchPrices from "../utils/useFetchPrices";
 import { useLocalStorage } from "../utils/useLocalStorage";
-import styles from "./Home.module.scss";
+import Box from "./Box";
+import HorizontalBarChart from "./Graphs/HorizontalBarChart";
+import Header from "./Header";
+import SeriesBox from "./SeriesBox";
 
 const Home = () => {
   const [fetchNow, setFetchNow] = useState();
@@ -16,34 +20,126 @@ const Home = () => {
       setFetchNow(true as any);
     }
     if (savedPrices === undefined && prices !== undefined) {
-      setSavedPrices(prices, 1000 * 60 * 60 * 3);
+      let filteredPrices = (prices as any).map((item: any) => ({
+        ...item,
+        pricesList: item.pricesList.filter(
+          (series: any) => !series.price.includes("0.00")
+        ),
+      }));
+      setSavedPrices(filteredPrices, 1000 * 60 * 60 * 3);
     }
   }, [prices]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const getSeriesInfo = (prices: any, seriesIndex: number) => {
+    if (prices) {
+      const dataPrices = prices.value.map((item: any) => ({
+        ...item,
+        pricesList: item.pricesList[seriesIndex],
+      }));
+
+      dataPrices.sort((prev: any, current: any) => {
+        return (
+          parseFloat(prev.pricesList.price) -
+          parseFloat(current.pricesList.price)
+        );
+      });
+
+      const labels = dataPrices.map((item: any) => item.company);
+
+      const priceData = dataPrices.map((item: any) =>
+        parseFloat(item.pricesList.price)
+      );
+
+      const cheapest = dataPrices.reduce(
+        (prev: any, current: any) =>
+          parseFloat(current.pricesList.price) <
+          parseFloat(prev.pricesList.price)
+            ? current
+            : prev,
+        dataPrices[0]
+      );
+
+      return {
+        data: dataPrices,
+        labels,
+        priceData,
+        cheapest,
+      };
+    }
+  };
+
+  const superInfo = getSeriesInfo(savedPrices, 0);
+  const premiumInfo = getSeriesInfo(savedPrices, 1);
+  const regularInfo = getSeriesInfo(savedPrices, 2);
+
   return (
-    <div className={styles.pageWrapper}>
-      <h1>საწვავის ფასები</h1>
+    <div className="bg-gray-2 min-h-full min-w-[370px]">
+      <Header />
 
-      <h2>
-        <Link to={"/graphs"}>გრაფიკები</Link>
-      </h2>
+      {savedPrices ? (
+        <Container>
+          <h2 className="pb-16 text-[20px] md text-[20px] md:text-24 text-center text-gray-8">
+            ყველაზე იაფი საწვავი დღეს
+          </h2>
 
-      <div className={styles.boxWrapper}>
-        {savedPrices?.value &&
-          Array.from(savedPrices?.value).map((item: any) => (
-            <div key={item.company} className={styles.companiesWrapper}>
-              <h2>{item.company}</h2>
-              <ul>
-                {Array.from(item.pricesList).map((prices: any, idx) => (
-                  <li key={idx} className={styles.pricesWrapper}>
-                    <div className={styles.priceTitle}>{prices.title}</div>
-                    <div className={styles.priceValue}>{prices.price}</div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-      </div>
+          <Row>
+            <Col xs="12" md="6" xl="4">
+              <div className="pb-16 max-w-[400px] m-auto md:max-w-auto">
+                <SeriesBox
+                  title={"ყველაზე იაფი სუპერი დღეს"}
+                  seriesInfo={superInfo}
+                />
+              </div>
+            </Col>
+            <Col xs="12" md="6" xl="4">
+              <div className="pb-16 max-w-[400px] m-auto md:max-w-auto">
+                <SeriesBox
+                  title={"ყველაზე იაფი პრემიუმი დღეს"}
+                  seriesInfo={premiumInfo}
+                />
+              </div>
+            </Col>
+            <Col xs="12" md="6" xl="4">
+              <div className="pb-16 max-w-[400px] m-auto md:max-w-auto">
+                <SeriesBox
+                  title={"ყველაზე იაფი რეგულარი დღეს"}
+                  seriesInfo={regularInfo}
+                />
+              </div>
+            </Col>
+          </Row>
+
+          <h2 className="py-16 text-[20px] md:text-24 text-center text-gray-8">
+            კომპანიები
+          </h2>
+
+          <Row>
+            {(savedPrices as SavedPricesTypes).value.map((item) => (
+              <Col xs="12" md="6" lg="4" key={item.company} className="pb-32">
+                <div className="max-w-[400px] m-auto">
+                  <Box className="shadow-200">
+                    <h4 className="text-16 text-center pb-2 font-600">
+                      {item.company}
+                    </h4>
+
+                    <HorizontalBarChart
+                      title={item.company}
+                      labels={item.pricesList.map((series) => series.title)}
+                      data={item.pricesList.map((series) =>
+                        parseFloat(series.price)
+                      )}
+                    />
+                  </Box>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      ) : (
+        <Container className="flex items-center justify-center h-full">
+          <Spinner animation="border" variant="success" />
+        </Container>
+      )}
     </div>
   );
 };
