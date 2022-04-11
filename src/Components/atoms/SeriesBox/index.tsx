@@ -1,5 +1,5 @@
 import Box from "../Box";
-import DoughnutChart from "../Graphs/DoughnutChart";
+import DoughnutChart from "../../organisms/Graphs/DoughnutChart";
 
 type SeriesBoxProps = {
   seriesInfo: any;

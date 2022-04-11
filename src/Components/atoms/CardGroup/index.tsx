@@ -1,4 +1,4 @@
-import { SavedPricesValue } from "../../types/api";
+import { SavedPricesValue } from "../../../types/api";
 
 type CardGroupProps = {
   item: SavedPricesValue;

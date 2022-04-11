@@ -45,6 +45,12 @@ const Graph = ({ data, tableTitle }: GraphProps) => {
           xAxes: {
             reverse: true,
           },
+          y: {
+            ticks: {
+              // forces step size to be 50 units
+              // stepSize: 3,
+            },
+          },
         },
       }}
       data={data}

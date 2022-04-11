@@ -19,7 +19,7 @@ module.exports = {
       "3xl": "1920px",
     },
     colors: {
-      primary: "#4986f8",
+      primary: "#f4a623",
       transparent: "transparent",
       current: "currentColor",
       white: {
@@ -37,6 +37,7 @@ module.exports = {
         8: "#262a2d",
         9: "#141d1f",
         10: "#0d1213",
+        11: "rgba(129, 136, 151, 0.2)",
       },
       green: {
         0: "#3ea372",

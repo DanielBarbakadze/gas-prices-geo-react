@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-burger-menu": "^2.8.3",
     "@types/react-helmet": "^6.1.5",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",

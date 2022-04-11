@@ -1,9 +1,10 @@
-import useFetchData from "../../utils/useFetchData";
+import useFetchData from "../../../utils/useFetchData";
 import CompanyGraph from "./CompanyGraph";
-import { APIResultTypes } from "../../types/api";
+import { APIResultTypes } from "../../../types/api";
 import { useState } from "react";
 import { Button, Container, Spinner } from "reactstrap";
-import Header from "../Header";
+import Header from "../../Header";
+import MobileFooter from "../MobileFooter";
 
 enum SelectedCompany {
   "Socar" = "სოკარი",
@@ -55,6 +56,8 @@ const Graphs = () => {
           <Spinner animation="border" variant="success" />
         )}
       </Container>
+
+      <MobileFooter />
     </div>
   );
 };

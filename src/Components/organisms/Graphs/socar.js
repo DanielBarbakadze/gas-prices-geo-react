@@ -1,4 +1,4 @@
-import { getMonthNameAndDayFromDate } from "../../utils/graph";
+import { getMonthNameAndDayFromDate } from "../../../utils/graph";
 
 export const socarPricesHistory = {
   0: [

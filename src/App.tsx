@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./Components/Home";
-import Graphs from "./Components/Graphs";
+import Graphs from "./Components/organisms/Graphs";
 // import Notification from "./Components/Notification";
 import "./App.css";
 

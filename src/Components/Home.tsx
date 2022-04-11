@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Spinner } from "reactstrap";
+
+import Header from "./Header";
+import Box from "./atoms/Box";
+import SeriesBox from "./atoms/SeriesBox";
+import MobileFooter from "./organisms/MobileFooter";
+import HorizontalBarChart from "./organisms/Graphs/HorizontalBarChart";
+
 import { SavedPricesTypes } from "../types/api";
 import useFetchPrices from "../utils/useFetchPrices";
 import { useLocalStorage } from "../utils/useLocalStorage";
-import Box from "./Box";
-import HorizontalBarChart from "./Graphs/HorizontalBarChart";
-import Header from "./Header";
-import SeriesBox from "./SeriesBox";
 
 const Home = () => {
   const [fetchNow, setFetchNow] = useState();
@@ -140,6 +143,8 @@ const Home = () => {
           <Spinner animation="border" variant="success" />
         </Container>
       )}
+
+      <MobileFooter />
     </div>
   );
 };

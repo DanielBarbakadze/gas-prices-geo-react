@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Input, Button, Label, InputGroup } from "reactstrap";
 
 import styles from "./Graphs.module.scss";
-import { APIResultTypes } from "../../types/api";
-import { getMonthNameAndDayFromDate, tenGasColors } from "../../utils/graph";
+import { APIResultTypes } from "../../../types/api";
+import { getMonthNameAndDayFromDate, tenGasColors } from "../../../utils/graph";
 
 import Graph from "./Graph";
 
@@ -38,8 +38,8 @@ const CompanyGraph = ({ companyData, children }: CompanyGraphProps) => {
       borderColor: tenGasColors[idx],
       cubicInterpolationMode: "monotone",
       pointStyle: "circle",
-      pointRadius: 7,
-      pointHoverRadius: 12,
+      pointRadius: period > 7 ? 2 : 7,
+      pointHoverRadius: period > 7 ? 6 : 12,
     })),
   };
 
