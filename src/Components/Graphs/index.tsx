@@ -35,7 +35,7 @@ const Graphs = () => {
             companyData={data?.fetchData as unknown as APIResultTypes}
           >
             <div>
-              {companies.map((company, idx) => (
+              {companies.map((company) => (
                 <Button
                   key={company}
                   color={
@@ -44,7 +44,7 @@ const Graphs = () => {
                       : "secondary"
                   }
                   onClick={() => setCurrentCompany(SelectedCompany[company])}
-                  style={{ margin: "15px" }}
+                  className="m-16"
                 >
                   {company}
                 </Button>
