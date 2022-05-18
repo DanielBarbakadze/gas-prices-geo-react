@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Spinner } from "reactstrap";
 
-import Header from "./Header";
-import Box from "./atoms/Box";
-import SeriesBox from "./atoms/SeriesBox";
-import MobileFooter from "./organisms/MobileFooter";
-import HorizontalBarChart from "./organisms/Graphs/HorizontalBarChart";
+import Header from "../../molecules/Header";
+import Box from "../../atoms/Box";
+import SeriesBox from "../../atoms/SeriesBox";
+import MobileFooter from "../../molecules/MobileFooter";
+import HorizontalBarChart from "../Graphs/HorizontalBarChart";
 
-import { SavedPricesTypes } from "../types/api";
-import useFetchPrices from "../utils/useFetchPrices";
-import { useLocalStorage } from "../utils/useLocalStorage";
+import { SavedPricesTypes } from "../../../types/api";
+import useFetchPrices from "../../../utils/useFetchPrices";
+import { useLocalStorage } from "../../../utils/useLocalStorage";
 
 const Home = () => {
   const [fetchNow, setFetchNow] = useState();

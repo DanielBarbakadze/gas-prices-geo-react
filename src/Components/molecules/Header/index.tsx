@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Container } from "reactstrap";
-import { IconChartPie, IconGasPump } from "../atoms/Icons";
+import { IconChartPie, IconGasPump } from "../../atoms/Icons";
 
 const Header = () => {
   return (

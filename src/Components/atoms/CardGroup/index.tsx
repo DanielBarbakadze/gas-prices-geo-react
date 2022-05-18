@@ -5,7 +5,6 @@ type CardGroupProps = {
 };
 
 const CardGroup = ({ item }: CardGroupProps) => {
-  // console.log(item);
   return (
     <div key={item.company} className="">
       <h2>{item.company}</h2>

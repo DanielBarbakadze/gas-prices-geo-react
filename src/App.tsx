@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./Components/Home";
+import Home from "./Components/organisms/HomePage/Home";
 import Graphs from "./Components/organisms/Graphs";
 // import Notification from "./Components/Notification";
 import "./App.css";

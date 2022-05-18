@@ -1,10 +1,13 @@
-import useFetchData from "../../../utils/useFetchData";
-import CompanyGraph from "./CompanyGraph";
-import { APIResultTypes } from "../../../types/api";
 import { useState } from "react";
 import { Button, Container, Spinner } from "reactstrap";
-import Header from "../../Header";
-import MobileFooter from "../MobileFooter";
+
+import Header from "../../molecules/Header";
+import MobileFooter from "../../molecules/MobileFooter";
+
+import useFetchData from "../../../utils/useFetchData";
+import { APIResultTypes } from "../../../types/api";
+
+import CompanyGraph from "./CompanyGraph";
 
 enum SelectedCompany {
   "Socar" = "სოკარი",
